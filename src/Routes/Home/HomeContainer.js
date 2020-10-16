@@ -18,8 +18,10 @@ const HomeContainer = () => {
   const [xData, setXdata] = useState([]);
   const [xserverSeed, setxServerSeed] = useState("");
   const [xclientSeed, setxClientSeed] = useState("");
-  const [serverSeed, setServerSeed] = useState("");
-  const [clientSeed, setClientSeed] = useState("");
+  const [serverSeed, setServerSeed] = useState(
+    "72eb3c745f0570f6b5432326f4d320f3a2097a9f9007bb7be048756edc748c68_50887bf2155a87f453de2716458a49ba79cc3436b720fcab6536a0c4d0004e9c"
+  );
+  const [clientSeed, setClientSeed] = useState("uppity thin son");
   const [findedRDB, setFindedRDB] = useState([]);
   // const [soundEffect] = useState(new Audio(AudioUrl));
 
@@ -30,8 +32,6 @@ const HomeContainer = () => {
     event.preventDefault();
     event.returnValue = "";
     try {
-      //console.log("Document written with ID in Menu: ", dockId);
-      //console.log("authService.currentUser", authService.currentUser.email);
       authService
         .signOut()
         .then(await dbService.collection("loggedID").doc(`${dockId}`).delete());
@@ -47,7 +47,6 @@ const HomeContainer = () => {
       console.log("onSubmit", clientSeed);
     }
     if (event.target.name === "serverSeed") {
-      console.log("onSubmit", serverSeed);
     }
 
     window.addEventListener("beforeunload", listener);
@@ -59,7 +58,7 @@ const HomeContainer = () => {
       target: { value },
     } = event;
     setClientSeed(value);
-    console.log(clientSeed);
+
     window.addEventListener("beforeunload", listener);
   };
 
@@ -69,7 +68,7 @@ const HomeContainer = () => {
       target: { value },
     } = event;
     setServerSeed(value);
-    console.log(serverSeed);
+
     window.addEventListener("beforeunload", listener);
   };
 
