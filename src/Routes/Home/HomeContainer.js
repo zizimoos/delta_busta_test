@@ -164,7 +164,7 @@ const HomeContainer = () => {
       return;
     } else if (serverSeed.length !== 64) {
       //129? 64?
-      setError("Server seed hash 를 잘못 입력 하셨습니다.");
+      setError("Server seed hash 를 입력하세요.");
       return;
     } else if (
       JSON.stringify(xData) !== JSON.stringify(arrayData) ||
