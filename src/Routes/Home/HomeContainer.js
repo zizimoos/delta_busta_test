@@ -87,9 +87,6 @@ const HomeContainer = () => {
     if (!searchTerm.includes(" ")) {
       searchTermCondition();
     }
-    // if (searchTerm !== "") {
-    //   searchByTerm(searchTerm);
-    // }
   };
 
   const updateTerm = (event) => {
