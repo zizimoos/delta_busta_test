@@ -16,10 +16,10 @@ const HomeContainer = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState("");
   const [xData, setXdata] = useState([]);
-  const [serverSeed, setServerSeed] = useState(
-    "76974ca3243fea6f9c70ad33105c98b434f421b101f8544a4f44d44a012e0288_991a69ca52e8d3b97b05516fcb17816e3051caff35456f19a4a00b2b037d24a6"
-  );
-  const [clientSeed, setClientSeed] = useState("default average");
+  const [xserverSeed, setxServerSeed] = useState("");
+  const [xclientSeed, setxClientSeed] = useState("");
+  const [serverSeed, setServerSeed] = useState("");
+  const [clientSeed, setClientSeed] = useState("");
   const [findedRDB, setFindedRDB] = useState([]);
   // const [soundEffect] = useState(new Audio(AudioUrl));
 
@@ -42,6 +42,14 @@ const HomeContainer = () => {
   };
 
   const onSubmit = (event) => {
+    event.preventDefault();
+    if (event.target.name === "clientSeed") {
+      console.log("onSubmit", clientSeed);
+    }
+    if (event.target.name === "serverSeed") {
+      console.log("onSubmit", serverSeed);
+    }
+
     window.addEventListener("beforeunload", listener);
   };
 
@@ -51,6 +59,7 @@ const HomeContainer = () => {
       target: { value },
     } = event;
     setClientSeed(value);
+    console.log(clientSeed);
     window.addEventListener("beforeunload", listener);
   };
 
@@ -60,6 +69,7 @@ const HomeContainer = () => {
       target: { value },
     } = event;
     setServerSeed(value);
+    console.log(serverSeed);
     window.addEventListener("beforeunload", listener);
   };
 
@@ -89,11 +99,6 @@ const HomeContainer = () => {
     } = event;
     setSearchTerm(value);
   };
-  // const playSoundEffect = () => {
-  //   if (loading === false) {
-  //     soundEffect.play();
-  //   }
-  // };
 
   const findDBForSameTerm = async () => {
     const findedData = await dbService.collection("searchedData").get();
@@ -127,7 +132,15 @@ const HomeContainer = () => {
     const includeZero = arrayData.includes(0);
     const biggerThan = arrayData.filter((n) => n > 28);
 
-    const sameTerm = findedRDB.filter((x) => x.searchTerm === searchTerm);
+    console.log("searchByTerm", clientSeed);
+    console.log("searchByTerm", serverSeed);
+
+    const sameTerm = findedRDB.filter(
+      (x) =>
+        x.searchTerm === searchTerm &&
+        x.clientSeed === clientSeed &&
+        x.serverSeed === serverSeed
+    );
 
     if (
       arrayData.length > 6 ||
@@ -143,7 +156,6 @@ const HomeContainer = () => {
       setChance([0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1]);
       setSum(10);
       setOverfifteen(0);
-      // setPercent([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
     } else if (sameTerm.length > 0) {
       setError("본인의 ID 보안을 위해 마무리 하실때는 꼭 Sign Out !");
       setChance(sameTerm[0].chanceNumbers);
@@ -153,18 +165,23 @@ const HomeContainer = () => {
       if (loading === false) {
         setLoading(true);
       }
-      // setTimeout(() => {
-      //   playSoundEffect();
-      // }, 0);
       return;
-    } else if (JSON.stringify(xData) !== JSON.stringify(arrayData)) {
+    } else if (serverSeed.length !== 129) {
+      setError("Server seed hash 를 잘못 입력 하셨습니다.");
+      return;
+    } else if (
+      JSON.stringify(xData) !== JSON.stringify(arrayData) ||
+      xclientSeed !== clientSeed ||
+      xserverSeed !== serverSeed
+    ) {
+      setxServerSeed(serverSeed);
+      setxClientSeed(clientSeed);
+      console.log("xData", xData);
+      console.log("arrayData", arrayData);
       setXdata(arrayData);
       numberGen();
       // setSearchTerm("");
-      setError("");
-      // setTimeout(() => {
-      //   playSoundEffect();
-      // }, 0);
+      setError("본인의 ID 보안을 위해 마무리 하실때는 꼭 Sign Out !");
     }
   };
 
@@ -203,25 +220,25 @@ const HomeContainer = () => {
     await dbService
       .collection("searchedData")
       .add({
-        loggedId: "email",
-        createAt: Date.now(),
         chanceNumbers: chanceNumbers,
         sum: sum,
         overfifteen: overfifteen,
         cnn: cnn,
+        clientSeed: clientSeed,
+        serverSeed: serverSeed,
       })
       .then(function (docRef) {
         // console.log("Document written with ID: ", docRef.id);
         // dockId = docRef.id;
         dbService.collection("searchedData").doc(docRef.id).set({
           id: docRef.id,
-          loggedId: "email",
-          createAt: Date.now(),
           searchTerm: searchTerm,
           chanceNumbers: chanceNumbers,
           sum: sum,
           overfifteen: overfifteen,
           cnn: cnn,
+          clientSeed: clientSeed,
+          serverSeed: serverSeed,
         });
       });
 

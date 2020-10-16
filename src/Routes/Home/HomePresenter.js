@@ -131,7 +131,7 @@ const HomePresenter = ({
             }}
           >
             {" "}
-            C :{" "}
+            ClientSeed :{" "}
           </span>
           <SInput
             name="clientSeed"
@@ -147,7 +147,7 @@ const HomePresenter = ({
             }}
           >
             {" "}
-            S :{" "}
+            Server seed :{" "}
           </span>
           <SInput
             name="serverSeed"
