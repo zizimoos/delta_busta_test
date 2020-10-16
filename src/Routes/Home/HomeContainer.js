@@ -21,7 +21,7 @@ const HomeContainer = () => {
   const [serverSeed, setServerSeed] = useState(
     "72eb3c745f0570f6b5432326f4d320f3a2097a9f9007bb7be048756edc748c68_50887bf2155a87f453de2716458a49ba79cc3436b720fcab6536a0c4d0004e9c"
   );
-  const [clientSeed, setClientSeed] = useState("uppity thin son");
+  const [clientSeed, setClientSeed] = useState("victory cheers son");
   const [findedRDB, setFindedRDB] = useState([]);
   // const [soundEffect] = useState(new Audio(AudioUrl));
 
@@ -162,7 +162,8 @@ const HomeContainer = () => {
         setLoading(true);
       }
       return;
-    } else if (serverSeed.length !== 129) {
+    } else if (serverSeed.length !== 64) {
+      //129? 64?
       setError("Server seed hash 를 잘못 입력 하셨습니다.");
       return;
     } else if (
