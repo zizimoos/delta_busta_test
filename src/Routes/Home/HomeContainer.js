@@ -19,7 +19,7 @@ const HomeContainer = () => {
   const [xserverSeed, setxServerSeed] = useState("");
   const [xclientSeed, setxClientSeed] = useState("");
   const [serverSeed, setServerSeed] = useState(
-    "72eb3c745f0570f6b5432326f4d320f3a2097a9f9007bb7be048756edc748c68_50887bf2155a87f453de2716458a49ba79cc3436b720fcab6536a0c4d0004e9c"
+    "3bdff2c00c08aed9393d2d9ee23c22e94eaa0ba1b36321b458c8be75117cf9ad"
   );
   const [clientSeed, setClientSeed] = useState("victory cheers son");
   const [findedRDB, setFindedRDB] = useState([]);
