@@ -3,33 +3,11 @@ import Router from "Components/Router";
 import GlobalStyles from "./GlobalStyles";
 import { authService } from "../fbase";
 
-// import { dbService } from "../fbase";
-// import { dockId } from "../Routes/Auth";
-
 function App() {
   const [init, setInit] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(authService.currentUser);
   const [userObj, setUserObj] = useState(null);
-
-  // const SignOut = async () => {
-  //   authService.signOut();
-  // };
-  // //beforeunload event를 사용해서
-  // const listener = async (event) => {
-  //   event.preventDefault();
-  //   event.returnValue = "";
-  //   try {
-  //     //console.log("Document written with ID in Menu: ", dockId);
-  //     //console.log("authService.currentUser", authService.currentUser.email);
-  //     authService
-  //       .signOut()
-  //       .then(await dbService.collection("loggedID").doc(`${dockId}`).delete());
-  //   } catch {
-  //   } finally {
-  //     SignOut();
-  //   }
-  // };
-  // window.addEventListener("beforeunload", listener);
+  console.log(authService.currentUser);
 
   useEffect(() => {
     authService.onAuthStateChanged((user) => {

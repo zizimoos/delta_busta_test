@@ -108,7 +108,6 @@ const Auth = ({ history }) => {
         await getLoggedIds();
         const check = loggedIds.filter((id) => id.loggedId === email);
         if (check.length !== 0) {
-          console.log("이미 다른 곳에서 접속중입니다.");
           setError("이미 다른 곳에서 접속중입니다.");
           setLogin({ loggIn: false });
           setTimeout(() => history.push("/production"), 2000);
