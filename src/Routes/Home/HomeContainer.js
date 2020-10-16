@@ -70,7 +70,7 @@ const HomeContainer = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (searchTerm.includes(" ")) {
-      setError("스페이스가 포함 되어있습니다. 검색버튼을 한번 더 누르세요");
+      setError("스페이스가 포함 되어있습니다. 검색버튼을 한번 더 누르세요 !");
       await setSearchTerm(searchTerm.trim());
       return;
     }
