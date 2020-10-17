@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { dbService } from "../fbase";
 import { withRouter } from "react-router-dom";
 
+const publicIp = require("public-ip");
+
 const Container = styled.div`
   width: 100vw;
   height: 85vh;
@@ -12,6 +14,7 @@ const Container = styled.div`
   align-items: center;
   background-color: rgb(45, 63, 81);
 `;
+
 const Greeting = styled.div`
   color: whitesmoke;
   margin-bottom: 30px;
@@ -27,12 +30,14 @@ const AuthFormBox = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
 const AuthForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
+
 const Input = styled.input`
   all: unset;
   width: 300px;
@@ -47,9 +52,9 @@ const Input = styled.input`
   background-color: #4a5d70;
   /* border: 2px solid red; */
   border-radius: 2px;
-
   margin-bottom: 5px;
 `;
+
 const Submit = styled.input`
   all: unset;
   width: 300px;
@@ -64,6 +69,7 @@ const Submit = styled.input`
 `;
 
 export let dockId = "";
+let userIp;
 
 const Auth = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -102,6 +108,7 @@ const Auth = ({ history }) => {
         //create Account
         await authService.createUserWithEmailAndPassword(email, password);
       } else {
+        userIp = await publicIp.v4();
         // log in
         await getLoggedIds();
         const check = loggedIds.filter((id) => id.loggedId === email);
@@ -128,10 +135,12 @@ const Auth = ({ history }) => {
               dockId = docRef.id;
               // dockId를 localstorage에 저장해놨다가, signOut 할때 사용할 수 있도록 할 것
               // 관리자 화면 만들때를 위해서 디비 리스트 저장해 놓을 필요 있음.
-              dbService
-                .collection("loggedID")
-                .doc(docRef.id)
-                .set({ id: docRef.id, loggedId: email });
+              dbService.collection("loggedID").doc(docRef.id).set({
+                id: docRef.id,
+                loggedId: email,
+                ip: userIp,
+                createAt: Date.now(),
+              });
             });
         }
       }
