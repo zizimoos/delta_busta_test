@@ -24,7 +24,7 @@ const Logo = styled.div`
 
 const HeaderC = ({ userObj }) => (
   <Header>
-    <Logo>Dice Hunter</Logo>
+    <Logo>busta</Logo>
     <Burger userObj={userObj}></Burger>
     {/* <RightMenu></RightMenu> */}
   </Header>

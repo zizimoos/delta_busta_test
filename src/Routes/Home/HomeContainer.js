@@ -44,7 +44,7 @@ const HomeContainer = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     if (event.target.name === "clientSeed") {
-      console.log("onSubmit", clientSeed);
+      // console.log("onSubmit", clientSeed);
     }
     if (event.target.name === "serverSeed") {
     }
@@ -107,7 +107,7 @@ const HomeContainer = () => {
       setFindedRDB((prev) => [findedDataObject, ...prev]);
     });
 
-    console.log("findedData.length", findedData.Of.docChanges.length);
+    // console.log("findedData.length", findedData.Of.docChanges.length);
 
     if (findedData.Of.docChanges.length > 500) {
       findedData.forEach((document) => {
@@ -128,8 +128,8 @@ const HomeContainer = () => {
     const includeZero = arrayData.includes(0);
     const biggerThan = arrayData.filter((n) => n > 28);
 
-    console.log("searchByTerm", clientSeed);
-    console.log("searchByTerm", serverSeed);
+    // console.log("searchByTerm", clientSeed);
+    // console.log("searchByTerm", serverSeed);
 
     const sameTerm = findedRDB.filter(
       (x) =>
@@ -173,8 +173,8 @@ const HomeContainer = () => {
     ) {
       setxServerSeed(serverSeed);
       setxClientSeed(clientSeed);
-      console.log("xData", xData);
-      console.log("arrayData", arrayData);
+      // console.log("xData", xData);
+      // console.log("arrayData", arrayData);
       setXdata(arrayData);
       numberGen();
       // setSearchTerm("");

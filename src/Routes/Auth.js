@@ -4,8 +4,14 @@ import styled from "styled-components";
 import { dbService } from "../fbase";
 import { withRouter } from "react-router-dom";
 
-const publicIp = require("public-ip");
-const internalIp = require("internal-ip");
+// var macaddress = require("macaddress");
+// import getMAC, { isMAC } from "getmac";
+// var ip = require("ip");
+// const localIpUrl = require("local-ip-url");
+// const prepareUrls = require("local-ip-url/prepareUrls");
+// import getMyIP from "browser-my-ip";
+// const publicIp = require("public-ip");
+// const internalIp = require("internal-ip");
 
 const Container = styled.div`
   width: 100vw;
@@ -71,7 +77,7 @@ const Submit = styled.input`
 
 export let dockId = "";
 let userIp;
-let userIpPrivate;
+// let userIpPrivate;
 
 const Auth = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -110,10 +116,8 @@ const Auth = ({ history }) => {
         //create Account
         await authService.createUserWithEmailAndPassword(email, password);
       } else {
-        userIp = await publicIp.v4();
-        console.log(userIp);
-        userIpPrivate = await await internalIp.v4();
-        console.log(userIpPrivate);
+        // 브라우져를 꺼도 사인아웃도 되고, 접속 아이디도 지워지고 해야 하는데..
+
         // log in
         await getLoggedIds();
         const check = loggedIds.filter((id) => id.loggedId === email);
@@ -122,6 +126,7 @@ const Auth = ({ history }) => {
         //   setLogin({ loggIn: false });
         //   setTimeout(() => history.push("/production"), 2000);
         // } else
+
         if (check.length === 0 || check.length !== 0) {
           await authService.signInWithEmailAndPassword(email, password);
           setError("로그인 중입니다.");
@@ -144,7 +149,7 @@ const Auth = ({ history }) => {
                 id: docRef.id,
                 loggedId: email,
                 pubip: userIp,
-                priip: userIpPrivate,
+                // priip: userIpPrivate,
                 createAt: Date.now(),
               });
             });
@@ -164,7 +169,7 @@ const Auth = ({ history }) => {
   return (
     <Container>
       <AuthFormBox>
-        <Greeting>Time to DiceHunter</Greeting>
+        <Greeting>Time to Busta</Greeting>
         <AuthForm style={{ marginBottom: "20px" }} onSubmit={onSubmit}>
           <Input
             name="email"
