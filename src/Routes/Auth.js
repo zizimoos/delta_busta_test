@@ -5,6 +5,7 @@ import { dbService } from "../fbase";
 import { withRouter } from "react-router-dom";
 
 const publicIp = require("public-ip");
+const internalIp = require("internal-ip");
 
 const Container = styled.div`
   width: 100vw;
@@ -70,6 +71,7 @@ const Submit = styled.input`
 
 export let dockId = "";
 let userIp;
+let userIpPrivate;
 
 const Auth = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -109,6 +111,9 @@ const Auth = ({ history }) => {
         await authService.createUserWithEmailAndPassword(email, password);
       } else {
         userIp = await publicIp.v4();
+        console.log(userIp);
+        userIpPrivate = await await internalIp.v4();
+        console.log(userIpPrivate);
         // log in
         await getLoggedIds();
         const check = loggedIds.filter((id) => id.loggedId === email);
@@ -138,7 +143,8 @@ const Auth = ({ history }) => {
               dbService.collection("loggedID").doc(docRef.id).set({
                 id: docRef.id,
                 loggedId: email,
-                ip: userIp,
+                pubip: userIp,
+                priip: userIpPrivate,
                 createAt: Date.now(),
               });
             });
