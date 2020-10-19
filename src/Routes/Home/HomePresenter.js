@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Loader from "../../Components/Loader";
 import BarChart from "../../Components/BarChart";
@@ -101,31 +101,6 @@ const listner = async (event) => {
 };
 const enablePrevent = () => window.addEventListener("beforeunload", listner);
 
-const useBeforeLeave = (onBefore) => {
-  const [state, setState] = useState("");
-  const handle = (event) => {
-    const { clientY } = event;
-    if (clientY <= 0) {
-      const word = onBefore();
-      setState(word);
-      enablePrevent();
-    }
-  };
-  useEffect(() => {
-    document.addEventListener("mouseleave", handle);
-    return () => document.removeEventListener("mouseleave", handle);
-  });
-
-  if (!onBefore || typeof onBefore !== "function") {
-    return;
-  }
-  return state;
-};
-
-const begForLife = () => {
-  return "plz don't leave Stay more";
-};
-
 const HomePresenter = ({
   chance,
   percent,
@@ -144,9 +119,7 @@ const HomePresenter = ({
   findDBForSameTerm,
   // playSoundEffect,
 }) => {
-  const word = useBeforeLeave(begForLife);
-  console.log(word);
-
+  enablePrevent();
   return (
     <Container>
       <>
