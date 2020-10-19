@@ -9,6 +9,8 @@ import { authService } from "../../fbase";
 import { dbService } from "../../fbase";
 import { dockId } from "../../Routes/Auth";
 
+import ModalApp from "../../Components/Modal";
+
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -170,6 +172,7 @@ const HomePresenter = ({
             value={serverSeed}
             onChange={onChangeServer}
           ></SInput>
+          <ModalApp></ModalApp>
           {/* <SSubmit type="submit" value="Save"></SSubmit> */}
         </AuthForm>
       </>

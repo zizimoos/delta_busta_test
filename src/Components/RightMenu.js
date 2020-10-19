@@ -78,7 +78,7 @@ const RightNav = ({ location: { pathname }, open, userObj }) => {
             <Slink to="/">Search</Slink>
           </Item>
           <Item current={pathname === "/product"}>
-            <Slink to="/product">Product</Slink>
+            <Slink to="/product">BUSTA 소개</Slink>
           </Item>
           {/* <Item current={pathname === "/company"}>
           <Slink to="/company">Company</Slink>
@@ -99,7 +99,7 @@ const RightNav = ({ location: { pathname }, open, userObj }) => {
       ) : (
         <>
           <Item current={pathname === "/product"}>
-            <Slink to="/product">Product</Slink>
+            <Slink to="/product">BUSTA 소개</Slink>
           </Item>
           <Item
             onClick={preSignOut}

@@ -36,7 +36,7 @@ const HeaderC = ({ userObj }) => {
   enablePrevent();
   return (
     <Header>
-      <Logo>busta</Logo>
+      <Logo>BUSTA</Logo>
       <Burger userObj={userObj}></Burger>
       {/* <RightMenu></RightMenu> */}
     </Header>
