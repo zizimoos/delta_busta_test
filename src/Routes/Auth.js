@@ -120,7 +120,7 @@ const Auth = ({ history }) => {
 
         // log in
         await getLoggedIds();
-        const check = loggedIds.filter((id) => id.loggedId === email);
+        const check = await loggedIds.filter((id) => id.loggedId === email);
         if (check.length !== 0) {
           setError("이미 다른 곳에서 접속중입니다.");
           setLogin({ loggIn: false });
@@ -166,7 +166,7 @@ const Auth = ({ history }) => {
   return (
     <Container>
       <AuthFormBox>
-        <Greeting>Test v.0.9</Greeting>
+        <Greeting>Test v.0.9.1</Greeting>
         <AuthForm style={{ marginBottom: "20px" }} onSubmit={onSubmit}>
           <Input
             name="email"
