@@ -130,6 +130,7 @@ const Auth = ({ history }) => {
           if (!login) {
             setLogin(true);
           }
+          await authService.signInWithEmailAndPassword(email, password);
           await dbService
             .collection("loggedID")
             .add({
@@ -149,7 +150,6 @@ const Auth = ({ history }) => {
                 createAt: Date.now(),
               });
             });
-          await authService.signInWithEmailAndPassword(email, password);
         }
       }
     } catch (error) {
