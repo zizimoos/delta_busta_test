@@ -124,33 +124,40 @@ const Auth = ({ history }) => {
         if (check.length !== 0) {
           setError("이미 다른 곳에서 접속중입니다.");
           setLogin({ loggIn: false });
-          setTimeout(() => history.push("/production"), 2000);
+          await setTimeout(() => history.push("/production"), 1000);
         } else if (check.length === 0) {
-          await authService.signInWithEmailAndPassword(email, password);
-          setError("로그인 중입니다.");
-          if (!login) {
-            setLogin(true);
-          }
           await getLoggedIds();
-          await dbService
-            .collection("loggedID")
-            .add({
-              loggedId: email,
-              createAt: Date.now(),
-            })
-            .then(function (docRef) {
-              // console.log("Document written with ID: ", docRef.id);
-              dockId = docRef.id;
-              // dockId를 localstorage에 저장해놨다가, signOut 할때 사용할 수 있도록 할 것
-              // 관리자 화면 만들때를 위해서 디비 리스트 저장해 놓을 필요 있음.
-              dbService.collection("loggedID").doc(docRef.id).set({
-                id: docRef.id,
+          const secondcheck = loggedIds.filter((id) => id.loggedId === email);
+          if (secondcheck !== 0) {
+            setError("이미 다른 곳에서 접속중입니다.");
+            setLogin({ loggIn: false });
+            setTimeout(() => history.push("/production"), 500);
+          } else {
+            setError("지금 로그인 중입니다.");
+            await authService.signInWithEmailAndPassword(email, password);
+            if (!login) {
+              setLogin(true);
+            }
+            await dbService
+              .collection("loggedID")
+              .add({
                 loggedId: email,
-                pubip: userIp,
-                // priip: userIpPrivate,
                 createAt: Date.now(),
+              })
+              .then(function (docRef) {
+                // console.log("Document written with ID: ", docRef.id);
+                dockId = docRef.id;
+                // dockId를 localstorage에 저장해놨다가, signOut 할때 사용할 수 있도록 할 것
+                // 관리자 화면 만들때를 위해서 디비 리스트 저장해 놓을 필요 있음.
+                dbService.collection("loggedID").doc(docRef.id).set({
+                  id: docRef.id,
+                  loggedId: email,
+                  pubip: userIp,
+                  // priip: userIpPrivate,
+                  createAt: Date.now(),
+                });
               });
-            });
+          }
         }
       }
     } catch (error) {
