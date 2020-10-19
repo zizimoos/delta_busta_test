@@ -6,13 +6,13 @@ import { dbService } from "../../fbase";
 import { dockId } from "../../Routes/Auth";
 
 import busta_cheer_01 from "../../assets/img/busta_cheer_01.png";
-import busta_cheer_01_02 from "../../assets/img/busta_cheer_01_01.jpg";
+
 import busta_cheer_02 from "../../assets/img/busta_cheer_02_01.png";
 import privace from "../../assets/img/privace.png";
 import waytoplay from "../../assets/img/waytoplay.png";
 import multiSign from "../../assets/img/multiSign.png";
 
-import busta_cheer_07 from "../../assets/img/busta_cheer_07.jpg";
+// import busta_cheer_07 from "../../assets/img/busta_cheer_07.jpg";
 import busta_cheer_08 from "../../assets/img/busta_cheer_08.jpg";
 import busta_cheer_09 from "../../assets/img/busta_cheer_09.png";
 

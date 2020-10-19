@@ -4,7 +4,7 @@ import styled from "styled-components";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
-import logo from "../assets/img/busta_logo.png";
+// import logo from "../assets/img/busta_logo.png";
 
 const styles = {
   fontFamily: "sans-serif",
