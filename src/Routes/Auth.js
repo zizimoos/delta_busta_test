@@ -126,7 +126,6 @@ const Auth = ({ history }) => {
           setLogin({ loggIn: false });
           setTimeout(() => history.push("/production"), 2000);
         } else if (check.length === 0) {
-          authService.signOut();
           await authService.signInWithEmailAndPassword(email, password);
           setError("로그인 중입니다.");
           if (!login) {
