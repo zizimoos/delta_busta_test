@@ -5,6 +5,10 @@ import BarChart from "../../Components/BarChart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearchDollar } from "@fortawesome/free-solid-svg-icons";
 
+import { authService } from "fbase";
+import { dbService } from "../fbase";
+import { dockId } from "../Routes/Auth";
+
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -107,6 +111,15 @@ const HomePresenter = ({
   findDBForSameTerm,
   // playSoundEffect,
 }) => {
+  const listner = async (event) => {
+    event.preventDefault();
+    event.returnValue = "";
+    authService
+      .signOut()
+      .then(await dbService.collection("loggedID").doc(`${dockId}`).delete());
+  };
+  const enablePrevent = () => window.addEventListener("beforeunload", listner);
+  enablePrevent();
   return (
     <Container>
       <>
