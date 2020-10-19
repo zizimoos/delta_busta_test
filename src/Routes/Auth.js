@@ -132,6 +132,7 @@ const Auth = ({ history }) => {
             setError("이미 다른 곳에서 접속중입니다.");
             setLogin({ loggIn: false });
             setTimeout(() => history.push("/production"), 500);
+            history.push("/");
           } else {
             setError("지금 로그인 중입니다.");
             await authService.signInWithEmailAndPassword(email, password);
