@@ -114,9 +114,8 @@ const HomePresenter = ({
   const listner = async (event) => {
     event.preventDefault();
     event.returnValue = "";
-    authService
-      .signOut()
-      .then(await dbService.collection("loggedID").doc(`${dockId}`).delete());
+    await dbService.collection("loggedID").doc(`${dockId}`).delete();
+    authService.signOut();
   };
   const enablePrevent = () => window.addEventListener("beforeunload", listner);
   enablePrevent();
