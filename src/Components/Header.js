@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import Burger from "./Buger";
 // import RightMenu from "./RightMenu";
+import { authService } from "../fbase";
+import { dbService } from "../fbase";
+import { dockId } from "../Routes/Auth";
 
 const Header = styled.header`
   position: fixed;
@@ -22,12 +25,22 @@ const Logo = styled.div`
   margin-left: 10px;
 `;
 
-const HeaderC = ({ userObj }) => (
-  <Header>
-    <Logo>busta</Logo>
-    <Burger userObj={userObj}></Burger>
-    {/* <RightMenu></RightMenu> */}
-  </Header>
-);
+const HeaderC = ({ userObj }) => {
+  const listner = async (event) => {
+    event.preventDefault();
+    event.returnValue = "";
+    await dbService.collection("loggedID").doc(`${dockId}`).delete();
+    authService.signOut();
+  };
+  const enablePrevent = () => window.addEventListener("beforeunload", listner);
+  enablePrevent();
+  return (
+    <Header>
+      <Logo>busta</Logo>
+      <Burger userObj={userObj}></Burger>
+      {/* <RightMenu></RightMenu> */}
+    </Header>
+  );
+};
 
 export default HeaderC;

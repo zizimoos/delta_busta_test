@@ -1,5 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+
+import { authService } from "../../fbase";
+import { dbService } from "../../fbase";
+import { dockId } from "../../Routes/Auth";
+
 import busta_cheer_01 from "../../assets/img/busta_cheer_01.jpg";
 import busta_cheer_02 from "../../assets/img/busta_cheer_02.jpg";
 import busta_cheer_03 from "../../assets/img/busta_cheer_03.jpg";
@@ -44,6 +49,14 @@ const Description = styled.div`
 `;
 
 const ProductPresenter = () => {
+  const listner = async (event) => {
+    event.preventDefault();
+    event.returnValue = "";
+    await dbService.collection("loggedID").doc(`${dockId}`).delete();
+    authService.signOut();
+  };
+  const enablePrevent = () => window.addEventListener("beforeunload", listner);
+  enablePrevent();
   return (
     <Container>
       <Section>
