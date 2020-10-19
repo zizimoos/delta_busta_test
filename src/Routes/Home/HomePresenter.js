@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Loader from "../../Components/Loader";
 import BarChart from "../../Components/BarChart";
@@ -119,6 +119,11 @@ const HomePresenter = ({
   };
   const enablePrevent = () => window.addEventListener("beforeunload", listner);
   enablePrevent();
+
+  useEffect(() => {
+    enablePrevent();
+  });
+
   return (
     <Container>
       <>
