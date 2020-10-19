@@ -121,13 +121,11 @@ const Auth = ({ history }) => {
         // log in
         await getLoggedIds();
         const check = loggedIds.filter((id) => id.loggedId === email);
-        // if (check.length !== 0) {
-        //   setError("이미 다른 곳에서 접속중입니다.");
-        //   setLogin({ loggIn: false });
-        //   setTimeout(() => history.push("/production"), 2000);
-        // } else
-
-        if (check.length === 0 || check.length !== 0) {
+        if (check.length !== 0) {
+          setError("이미 다른 곳에서 접속중입니다.");
+          setLogin({ loggIn: false });
+          setTimeout(() => history.push("/production"), 2000);
+        } else if (check.length === 0) {
           await authService.signInWithEmailAndPassword(email, password);
           setError("로그인 중입니다.");
           if (!login) {
@@ -165,7 +163,7 @@ const Auth = ({ history }) => {
   useEffect(() => {
     getLoggedIds();
   }, []);
-
+  authService.signOut();
   return (
     <Container>
       <AuthFormBox>
