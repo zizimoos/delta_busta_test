@@ -5,11 +5,12 @@ import { authService } from "../../fbase";
 import { dbService } from "../../fbase";
 import { dockId } from "../../Routes/Auth";
 
-import busta_cheer_01 from "../../assets/img/busta_cheer_01.jpg";
-import busta_cheer_02 from "../../assets/img/busta_cheer_02.jpg";
-import busta_cheer_03 from "../../assets/img/busta_cheer_03.jpg";
-import busta_cheer_04 from "../../assets/img/busta_cheer_04.jpg";
-import busta_cheer_05 from "../../assets/img/busta_cheer_05.jpg";
+import busta_cheer_01 from "../../assets/img/busta_cheer_01.png";
+import busta_cheer_01_02 from "../../assets/img/busta_cheer_01_01.jpg";
+import busta_cheer_02 from "../../assets/img/busta_cheer_02_01.png";
+import privace from "../../assets/img/privace.png";
+import waytoplay from "../../assets/img/waytoplay.png";
+import multiSign from "../../assets/img/multiSign.png";
 
 import busta_cheer_07 from "../../assets/img/busta_cheer_07.jpg";
 import busta_cheer_08 from "../../assets/img/busta_cheer_08.jpg";
@@ -25,23 +26,34 @@ const Container = styled.div`
   background-color: rgb(45, 63, 81);
 `;
 const Section = styled.div`
-  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
   margin-bottom: 20px;
-  width: 800px;
+  padding: 10px;
+  width: 60vw;
+  background-color: ${(props) => props.color};
+  border-radius: 5px;
 `;
 const Title = styled.div`
-  font-size: 22px;
+  font-size: 30px;
   color: white;
-  margin-bottom: 10px;
+  font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
 const ImgSection = styled.div`
   width: 800px;
-  height: 600px;
+  height: 400px;
   background-image: url(${(props) => props.img});
   background-size: cover;
   background-position-x: center;
+  border-radius: 10px;
+  margin-bottom: 10px;
 `;
 const Description = styled.div`
+  padding: 20px;
   font-size: 16px;
   color: white;
   line-height: 26px;
@@ -59,19 +71,22 @@ const ProductPresenter = () => {
   enablePrevent();
   return (
     <Container>
-      <Section>
-        <Title>busta</Title>
+      <Section color={"#34495e"}>
+        <Title>What is BUSTA? </Title>
+        <Description>
+          busta는 실전에 있어서 패할 확률을 줄여주는 획기적인 추론 시스템입니다.
+        </Description>
         <ImgSection img={busta_cheer_01}></ImgSection>
         <Description>
           busta는 부스타 다이스의 결과값을 추론하는 추론기 입니다. 다년간의
           축적된 데이터를 바탕으로 평균값 추론 확률 제공 및 씨드에 따른 추론
           확률을 제공합니다. 이를 통해 부스타 다이스 이용시 좀 더 좋은 확률에
           접근하는 방법을 제시합니다. 즉 실전배팅에 있어서 패할 확율을 줄여주는
-          획기적인 추론 시스템입니다
+          획기적인 추론 시스템입니다.
         </Description>
       </Section>
 
-      <Section>
+      <Section color={"#674172"}>
         <Title>세계가 열광하고 있는 새로운 쇼셜게임 bustadice! ​ </Title>
         <ImgSection img={busta_cheer_02}></ImgSection>
         <Description>
@@ -80,9 +95,9 @@ const ProductPresenter = () => {
           난수이기 때문에 예측하기가 굉장히 어렵습니다.
         </Description>
       </Section>
-      <Section>
+      <Section color={"#765d69"}>
         <Title>향상된 개인 정보</Title>
-        <ImgSection img={busta_cheer_03}></ImgSection>
+        <ImgSection img={privace}></ImgSection>
         <Description>
           개인정보보호를 강화하여 플레이어와 투자자에게 업계최고의
           개인정보보호를 제공하기위해 출금시 정교한 알고리즘을 사용하여 다른
@@ -90,9 +105,9 @@ const ProductPresenter = () => {
           낮추어 출금 수수료가 가장 낮습니다
         </Description>
       </Section>
-      <Section>
+      <Section color={"#019875"}>
         <Title>게임 작동 방식 </Title>
-        <ImgSection img={busta_cheer_04}></ImgSection>
+        <ImgSection img={waytoplay}></ImgSection>
         <Description>
           각 배팅의 결과는 1x배에서 1,000,000x배 사이에서 무작위로 나옵니다
           결과가 초과 될것으로 생각되는 목표를 추측하는 것은 당신의 몫입니다
@@ -100,9 +115,9 @@ const ProductPresenter = () => {
           추측하면 베팅금액에 추측한 배수가 곱해집니다.
         </Description>
       </Section>
-      <Section>
+      <Section color={"#6c7a89"}>
         <Title>다중 서명 냉장 보관</Title>
-        <ImgSection img={busta_cheer_05}></ImgSection>
+        <ImgSection img={multiSign}></ImgSection>
         <Description>
           다중서명 콜드 스토리지로 대부분 사용자의 자금은 부스타다이스 감사자 및
           중립 제3자가 보 유한 키를 사용하여 자금의 2/3는 콜드 스토리지에
@@ -123,17 +138,7 @@ const ProductPresenter = () => {
           과거의 일일 뿐입니다.
         </Description>
       </Section>
-      <Section>
-        <Title>뱅커에 투자하십시오 </Title>
-        <ImgSection img={busta_cheer_07}></ImgSection>
-        <Description>
-          스릴보다 비트코인을 천천히 성장시키고자 한다면 뱅크롤에 투자를 하고
-          카지노의 이익에 참여 하시면 됩니다 언제든 원할때마다 투자하고 매각할수
-          있습니다 이익에 대한 50%의 경쟁 수수료를 재공 합니다 자금이 희석되면
-          보상을 받습니다 Kelly 기준에 의해 제한되는 적절한 위험 관리를
-          제공합니다.
-        </Description>
-      </Section>
+
       <Section>
         <Title>부스타 이용방법 </Title>
         <ImgSection img={busta_cheer_08}></ImgSection>
