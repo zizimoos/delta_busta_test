@@ -93,6 +93,39 @@ const SInput = styled.input`
 //   cursor: pointer;
 // `;
 
+const listner = async (event) => {
+  event.preventDefault();
+  event.returnValue = "";
+  await dbService.collection("loggedID").doc(`${dockId}`).delete();
+  authService.signOut();
+};
+const enablePrevent = () => window.addEventListener("beforeunload", listner);
+
+const useBeforeLeave = (onBefore) => {
+  const [state, setState] = useState("");
+  const handle = (event) => {
+    const { clientY } = event;
+    if (clientY <= 0) {
+      const word = onBefore();
+      setState(word);
+      enablePrevent();
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("mouseleave", handle);
+    return () => document.removeEventListener("mouseleave", handle);
+  });
+
+  if (!onBefore || typeof onBefore !== "function") {
+    return;
+  }
+  return state;
+};
+
+const begForLife = () => {
+  return "plz don't leave Stay more";
+};
+
 const HomePresenter = ({
   chance,
   percent,
@@ -111,38 +144,6 @@ const HomePresenter = ({
   findDBForSameTerm,
   // playSoundEffect,
 }) => {
-  const listner = async (event) => {
-    event.preventDefault();
-    event.returnValue = "";
-    await dbService.collection("loggedID").doc(`${dockId}`).delete();
-    authService.signOut();
-  };
-  const enablePrevent = () => window.addEventListener("beforeunload", listner);
-
-  const useBeforeLeave = (onBefore) => {
-    const [state, setState] = useState("");
-    const handle = (event) => {
-      const { clientY } = event;
-      if (clientY <= 0) {
-        const word = onBefore();
-        setState(word);
-        enablePrevent();
-      }
-    };
-    useEffect(() => {
-      document.addEventListener("mouseleave", handle);
-      return () => document.removeEventListener("mouseleave", handle);
-    });
-
-    if (!onBefore || typeof onBefore !== "function") {
-      return;
-    }
-    return state;
-  };
-
-  const begForLife = () => {
-    return "plz don't leave Stay more";
-  };
   const word = useBeforeLeave(begForLife);
   console.log(word);
 
