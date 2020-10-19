@@ -166,7 +166,7 @@ const Auth = ({ history }) => {
   return (
     <Container>
       <AuthFormBox>
-        <Greeting>Time to Busta</Greeting>
+        <Greeting>Test v.0.9</Greeting>
         <AuthForm style={{ marginBottom: "20px" }} onSubmit={onSubmit}>
           <Input
             name="email"
