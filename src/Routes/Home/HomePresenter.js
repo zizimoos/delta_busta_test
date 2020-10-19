@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Loader from "../../Components/Loader";
 import BarChart from "../../Components/BarChart";
@@ -118,11 +118,33 @@ const HomePresenter = ({
     authService.signOut();
   };
   const enablePrevent = () => window.addEventListener("beforeunload", listner);
-  enablePrevent();
 
-  useEffect(() => {
-    enablePrevent();
-  });
+  const useBeforeLeave = (onBefore) => {
+    const [state, setState] = useState("");
+    const handle = (event) => {
+      const { clientY } = event;
+      if (clientY <= 0) {
+        const word = onBefore();
+        setState(word);
+        enablePrevent();
+      }
+    };
+    useEffect(() => {
+      document.addEventListener("mouseleave", handle);
+      return () => document.removeEventListener("mouseleave", handle);
+    });
+
+    if (!onBefore || typeof onBefore !== "function") {
+      return;
+    }
+    return state;
+  };
+
+  const begForLife = () => {
+    return "plz don't leave Stay more";
+  };
+  const word = useBeforeLeave(begForLife);
+  console.log(word);
 
   return (
     <Container>
