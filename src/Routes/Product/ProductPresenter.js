@@ -6,14 +6,13 @@ import { dbService } from "../../fbase";
 import { dockId } from "../../Routes/Auth";
 
 import busta_cheer_01 from "../../assets/img/busta_cheer_01.png";
-
 import busta_cheer_02 from "../../assets/img/busta_cheer_02_01.png";
 import privace from "../../assets/img/privace.png";
 import waytoplay from "../../assets/img/waytoplay.png";
-import multiSign from "../../assets/img/multiSign.png";
+import multiSign from "../../assets/img/multiSign800.png";
 
 // import busta_cheer_07 from "../../assets/img/busta_cheer_07.jpg";
-import busta_cheer_08 from "../../assets/img/busta_cheer_08.jpg";
+import howtoplay from "../../assets/img/howtoplay.png";
 import busta_cheer_09 from "../../assets/img/busta_cheer_09.png";
 
 const Container = styled.div`
@@ -141,7 +140,7 @@ const ProductPresenter = () => {
 
       <Section>
         <Title>부스타 이용방법 </Title>
-        <ImgSection img={busta_cheer_08}></ImgSection>
+        <ImgSection img={howtoplay}></ImgSection>
         <Description>
           부스타는 bustadice에서 2배당 이상에 배팅을 할 경우, 유저가
           배팅하려하는 판의 배당 숫자가 2배당 이하(게임에 지는 숫자)가 연속으로
