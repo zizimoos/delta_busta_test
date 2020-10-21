@@ -49,6 +49,27 @@ const ManualButton = styled.div`
   z-index: 10;
 `;
 
+const IntroButton = styled.div`
+  padding: 3px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100px;
+  text-align: center;
+  background-color: indianred;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 20px;
+  color: whitesmoke;
+  z-index: 10;
+`;
+
+const ButtonCarrier = styled.div`
+  display: flex;
+
+  justify-content: center;
+  margin-top: 30px;
+`;
+
 const ModalApp = ({ history }) => {
   const [state, setState] = useState({ open: true });
 
@@ -60,6 +81,10 @@ const ModalApp = ({ history }) => {
     setState({ open: false });
   };
   const goManul = () => {
+    history.push("/company");
+    setState({ open: false });
+  };
+  const goIntro = () => {
     history.push("/product");
     setState({ open: false });
   };
@@ -80,7 +105,11 @@ const ModalApp = ({ history }) => {
             사용 설명은 아래 버튼을 클릭하셔서 확인 하시면 됩니다.
           </p>
           {/* <LogoBack img={logo}></LogoBack> */}
-          <ManualButton onClick={goManul}>사용 설명서</ManualButton>
+          <ButtonCarrier>
+            <ManualButton onClick={goManul}>사용 설명서</ManualButton>
+            <IntroButton onClick={goIntro}>부스타 소개</IntroButton>
+          </ButtonCarrier>
+
           <p style={{ padding: "20px" }}></p>
         </ModalBox>
       </Modal>
