@@ -101,9 +101,9 @@ const RightNav = ({ location: { pathname }, open, userObj }) => {
           <Item current={pathname === "/product"}>
             <Slink to="/product">Busta 소개</Slink>
           </Item>
-          <Item current={pathname === "/company"}>
+          {/* <Item current={pathname === "/company"}>
             <Slink to="/company">Busta 설명서</Slink>
-          </Item>
+          </Item> */}
           <Item
             onClick={preSignOut}
             current={pathname === "/" && !authService.currentUser}
