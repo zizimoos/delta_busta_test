@@ -78,14 +78,14 @@ const RightNav = ({ location: { pathname }, open, userObj }) => {
             <Slink to="/">Search</Slink>
           </Item>
           <Item current={pathname === "/product"}>
-            <Slink to="/product">BUSTA 소개</Slink>
+            <Slink to="/product">BUSTA 소개 01</Slink>
           </Item>
-          {/* <Item current={pathname === "/company"}>
-          <Slink to="/company">Company</Slink>
-        </Item>
-        <Item current={pathname === "/detail"}>
-          <Slink to="/detail">Detail</Slink>
-        </Item> */}
+          <Item current={pathname === "/company"}>
+            <Slink to="/company">BUSTA 소개 02</Slink>
+          </Item>
+          {/* <Item current={pathname === "/detail"}>
+            <Slink to="/detail">Detail</Slink>
+          </Item> */}
           <Item
             onClick={preSignOut}
             current={!authService.currentUser}
@@ -99,7 +99,10 @@ const RightNav = ({ location: { pathname }, open, userObj }) => {
       ) : (
         <>
           <Item current={pathname === "/product"}>
-            <Slink to="/product">BUSTA 소개</Slink>
+            <Slink to="/product">BUSTA 소개 01</Slink>
+          </Item>
+          <Item current={pathname === "/company"}>
+            <Slink to="/company">BUSTA 소개 02</Slink>
           </Item>
           <Item
             onClick={preSignOut}

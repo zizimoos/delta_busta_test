@@ -8,13 +8,13 @@ import { dockId } from "../../Routes/Auth";
 // import AudioUrl from "../../assets/sound/barAlarm.mp3";
 
 const HomeContainer = () => {
-  const [chance, setChance] = useState([]);
+  const [chance, setChance] = useState([2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]);
   const [percent, setPercent] = useState([]);
-  const [sum, setSum] = useState(0);
+  const [sum, setSum] = useState(24);
   const [overfifteen, setOverfifteen] = useState(0);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState("접속 되었습니다. 검색을 시작하세요.");
   const [xData, setXdata] = useState([]);
   const [xserverSeed, setxServerSeed] = useState("");
   const [xclientSeed, setxClientSeed] = useState("");

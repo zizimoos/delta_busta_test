@@ -124,7 +124,7 @@ const Auth = ({ history }) => {
         if (check.length !== 0) {
           setError("이미 다른 곳에서 접속중입니다.");
           setLogin({ loggIn: false });
-          await setTimeout(() => history.push("/production"), 1000);
+          await setTimeout(() => history.push("/product"), 1000);
         } else if (check.length === 0) {
           setError("지금 로그인 중입니다.");
           if (!login) {

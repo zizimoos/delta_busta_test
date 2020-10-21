@@ -6,6 +6,9 @@ import { authService } from "../fbase";
 import { dbService } from "../fbase";
 import { dockId } from "../Routes/Auth";
 
+import logo from "../assets/img/busta_logo.png";
+// import testImg from "../assets/img/testimg.png";
+
 const Header = styled.header`
   position: fixed;
   top: 0;
@@ -21,10 +24,25 @@ const Header = styled.header`
   z-index: 10;
   /* box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.8); */
 `;
-const Logo = styled.div`
-  margin-left: 10px;
+const LogoContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
 `;
-
+const Logo = styled.div`
+  width: 16px;
+  height: 16px;
+  margin-left: 10px;
+  background-image: url(${(props) => props.img});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  z-index: 100;
+  /* background-color: whitesmoke; */
+`;
+const TextBox = styled.div`
+  margin-top: 3px;
+  margin-left: 15px;
+`;
 const HeaderC = ({ userObj }) => {
   const listner = async (event) => {
     event.preventDefault();
@@ -36,7 +54,10 @@ const HeaderC = ({ userObj }) => {
   enablePrevent();
   return (
     <Header>
-      <Logo>BUSTA</Logo>
+      <LogoContainer>
+        <Logo img={logo}></Logo>
+        <TextBox>Busta</TextBox>
+      </LogoContainer>
       <Burger userObj={userObj}></Burger>
       {/* <RightMenu></RightMenu> */}
     </Header>
