@@ -41,6 +41,9 @@ const ModalApp = () => {
             10월 30일 업데이트로 인하여 오전 6시 부터 오전 10시까지 접속이
             제한됩니다. 많은 양해 부탁드립니다.
           </p>
+          <a href="https://zen-bardeen-a3a1a8.netlify.app/product">
+            <div>설명서</div>
+          </a>
           <p style={{ padding: "20px" }}></p>
         </ModalBox>
       </Modal>
