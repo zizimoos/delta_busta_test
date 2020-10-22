@@ -122,14 +122,12 @@ const HomeContainer = () => {
     const arrayData = noneSearchTerm.split(",").map((d) => parseInt(d));
 
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    // console.log(arrayData);
+
     const conditionSum = arrayData.reduce(reducer);
     const notANumber = arrayData.includes(NaN);
-    const includeZero = arrayData.includes(0);
+    // const includeZero = arrayData.includes(0);
+    //todo : 0이 한개 이상이면 안되도록 수정
     const biggerThan = arrayData.filter((n) => n > 28);
-
-    // console.log("searchByTerm", clientSeed);
-    // console.log("searchByTerm", serverSeed);
 
     const sameTerm = findedRDB.filter(
       (x) =>
@@ -140,10 +138,10 @@ const HomeContainer = () => {
 
     if (
       arrayData.length > 6 ||
-      arrayData.length < 5 ||
+      arrayData.length < 3 ||
       notANumber ||
       biggerThan.length !== 0 ||
-      includeZero ||
+      // includeZero ||
       conditionSum > 50 ||
       serverSeed === "" ||
       clientSeed === ""
