@@ -120,7 +120,7 @@ const BarChart = ({ chance, sum, overfifteen, recommendArray, loading }) => {
                   {" "}
                   {((cn / sum) * 100).toPrecision(2)} %
                 </span>
-                <Recommend>◎{+recommendArray[index]}</Recommend>
+                <Recommend>◎{+recommendArray[index]} %</Recommend>
               </div>
               <div
                 key={`divtwo` + index}

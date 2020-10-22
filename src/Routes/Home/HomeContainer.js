@@ -185,25 +185,26 @@ const HomeContainer = () => {
 
   const numberGen = async () => {
     for (let i = 0; i < 12; i++) {
-      if (i < 7) {
+      if (i < 4) {
         chanceNumber =
           Math.floor(Math.random() * (Math.random() * 10000)) + 132;
+        chanceNumbers.push(chanceNumber);
+      } else if (i > 3 && i < 7) {
+        chanceNumber = Math.floor(Math.random() * (Math.random() * 8000)) + 132;
         chanceNumbers.push(chanceNumber);
       } else if (i > 6 && i < 9) {
         chanceNumber = Math.floor(Math.random() * (Math.random() * 6000)) + 332;
         chanceNumbers.push(chanceNumber);
       } else if (i > 8) {
-        chanceNumber = Math.floor(Math.random() * (Math.random() * 1000)) + 132;
+        chanceNumber = Math.floor(Math.random() * (Math.random() * 5000)) + 132;
         chanceNumbers.push(chanceNumber);
       }
     }
 
-    const overfifteen = Math.floor(Math.random() * 100) + 9;
+    const overfifteen = Math.floor(Math.random() * 4000) + 800;
     const reducer = (accumulator, currentValue) => accumulator + currentValue;
     const sum = chanceNumbers.reduce(reducer) + overfifteen;
-    const cnn = chanceNumbers.map((cn) =>
-      parseFloat(((cn / sum) * 100).toPrecision(4))
-    );
+    const cnn = chanceNumbers.map((cn) => parseInt((cn / sum) * 100));
     setChance(chanceNumbers);
     setSum(sum);
     setOverfifteen(overfifteen);
