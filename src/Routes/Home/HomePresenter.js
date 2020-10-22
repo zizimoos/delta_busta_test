@@ -103,6 +103,93 @@ const listner = async (event) => {
 };
 const enablePrevent = () => window.addEventListener("beforeunload", listner);
 
+// percent를 하나씩 더해서 만든 어레이를 barchat에 전달.
+
+const recomend = (percent) => {
+  let recomendArray = [];
+  recomendArray.push(percent[0]);
+  recomendArray.push(percent[0] + percent[1]);
+  recomendArray.push(percent[0] + percent[1] + percent[2]);
+  recomendArray.push(percent[0] + percent[1] + percent[2] + percent[3]);
+  recomendArray.push(
+    percent[0] + percent[1] + percent[2] + percent[3] + percent[4]
+  );
+  recomendArray.push(
+    percent[0] + percent[1] + percent[2] + percent[3] + percent[4] + percent[5]
+  );
+  recomendArray.push(
+    percent[0] +
+      percent[1] +
+      percent[2] +
+      percent[3] +
+      percent[4] +
+      percent[5] +
+      percent[6]
+  );
+  recomendArray.push(
+    percent[0] +
+      percent[1] +
+      percent[2] +
+      percent[3] +
+      percent[4] +
+      percent[5] +
+      percent[6] +
+      percent[7]
+  );
+  recomendArray.push(
+    percent[0] +
+      percent[1] +
+      percent[2] +
+      percent[3] +
+      percent[4] +
+      percent[5] +
+      percent[6] +
+      percent[7] +
+      percent[8]
+  );
+  recomendArray.push(
+    percent[0] +
+      percent[1] +
+      percent[2] +
+      percent[3] +
+      percent[4] +
+      percent[5] +
+      percent[6] +
+      percent[7] +
+      percent[8] +
+      percent[9]
+  );
+  recomendArray.push(
+    percent[0] +
+      percent[1] +
+      percent[2] +
+      percent[3] +
+      percent[4] +
+      percent[5] +
+      percent[6] +
+      percent[7] +
+      percent[8] +
+      percent[9] +
+      percent[10]
+  );
+  recomendArray.push(
+    percent[0] +
+      percent[1] +
+      percent[2] +
+      percent[3] +
+      percent[4] +
+      percent[5] +
+      percent[6] +
+      percent[7] +
+      percent[8] +
+      percent[9] +
+      percent[10] +
+      percent[11]
+  );
+  console.log(recomendArray);
+  return recomendArray;
+};
+
 const HomePresenter = ({
   chance,
   percent,
@@ -122,6 +209,7 @@ const HomePresenter = ({
   // playSoundEffect,
 }) => {
   enablePrevent();
+  const recommendArray = recomend(percent);
   return (
     <Container>
       <>
@@ -192,6 +280,7 @@ const HomePresenter = ({
           </ErrorMessage>
           <BarChart
             chance={chance}
+            recommendArray={recommendArray}
             sum={sum}
             overfifteen={overfifteen}
             findDBForSameTerm={findDBForSameTerm}

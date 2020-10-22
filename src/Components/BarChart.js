@@ -66,7 +66,13 @@ const OverTwelve = styled.span`
   color: whitesmoke;
   font-size: 16px;
 `;
-const BarChart = ({ chance, sum, overfifteen, loading }) => {
+
+const Recommend = styled.div`
+  margin-top: 7px;
+  color: white;
+`;
+
+const BarChart = ({ chance, sum, overfifteen, recommendArray, loading }) => {
   const listner = async (event) => {
     event.preventDefault();
     event.returnValue = "";
@@ -99,6 +105,7 @@ const BarChart = ({ chance, sum, overfifteen, loading }) => {
                   {index}
                 </span>
                 <BarUnit cnsum={cn / sum}></BarUnit>
+
                 <span
                   key={`spanthree` + index}
                   style={{
@@ -113,6 +120,7 @@ const BarChart = ({ chance, sum, overfifteen, loading }) => {
                   {" "}
                   {((cn / sum) * 100).toPrecision(2)} %
                 </span>
+                <Recommend>◎{+recommendArray[index]}</Recommend>
               </div>
               <div
                 key={`divtwo` + index}
