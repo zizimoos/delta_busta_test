@@ -9,7 +9,21 @@ import { dockId } from "../../Routes/Auth";
 
 const HomeContainer = () => {
   const [chance, setChance] = useState([2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]);
-  const [percent, setPercent] = useState([]);
+  const [percent, setPercent] = useState([
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+  ]);
   const [sum, setSum] = useState(24);
   const [overfifteen, setOverfifteen] = useState(0);
   const [loading, setLoading] = useState(false);

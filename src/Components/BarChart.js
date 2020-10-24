@@ -123,7 +123,7 @@ const BarChart = ({ chance, sum, overfifteen, recommendArray, loading }) => {
                 <Recommend>
                   {+recommendArray[index] < 70
                     ? ""
-                    : `RISK HIGH ${+recommendArray[index]} %`}
+                    : `RISK  ${+recommendArray[index]} %`}
                 </Recommend>
               </div>
               <div
