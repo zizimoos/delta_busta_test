@@ -69,7 +69,7 @@ const OverTwelve = styled.span`
 
 const Recommend = styled.div`
   margin-top: 7px;
-  color: white;
+  color: #ec644b;
 `;
 
 const BarChart = ({ chance, sum, overfifteen, recommendArray, loading }) => {
@@ -114,13 +114,17 @@ const BarChart = ({ chance, sum, overfifteen, recommendArray, loading }) => {
                     marginRight: "20px",
                     textAlign: "start",
                     paddingTop: "6px",
-                    color: "#ec644b",
+                    color: "dodgerblue",
                   }}
                 >
                   {" "}
                   {((cn / sum) * 100).toPrecision(2)} %
                 </span>
-                <Recommend>◎{+recommendArray[index]} %</Recommend>
+                <Recommend>
+                  {+recommendArray[index] < 70
+                    ? ""
+                    : `RISK HIGH ${+recommendArray[index]} %`}
+                </Recommend>
               </div>
               <div
                 key={`divtwo` + index}
