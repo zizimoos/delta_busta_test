@@ -73,7 +73,7 @@ const CompanyPresenter = () => {
       <a href={finder} target="_blank" rel="noopener noreferrer" download>
         <Button>
           {/* <i className="fas fa-download" /> */}
-          finder download
+          Finder download
           <FontAwesomeIcon
             icon={faCloudDownloadAlt}
             size="1x"
