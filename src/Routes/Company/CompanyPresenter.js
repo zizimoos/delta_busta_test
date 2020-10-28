@@ -9,6 +9,10 @@ import run from "../../assets/img/run.png";
 import search from "../../assets/img/search.png";
 import realBet from "../../assets/img/realBet.png";
 import result from "../../assets/img/result.png";
+import finder from "../../assets/file/finder.txt";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCloudDownloadAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Container = styled.div`
   width: 100vw;
@@ -50,11 +54,34 @@ const ArticleImage = styled.div`
   background-repeat: no-repeat;
 `;
 
+const Button = styled.div`
+  width: 200px;
+  height: 30px;
+  font-size: 16px;
+  color: whitesmoke;
+  background-color: indianred;
+  border-radius: 4px;
+  text-align: center;
+  padding-top: 7px;
+  margin-bottom: 10px;
+`;
+
 const CompanyPresenter = () => {
   return (
     <Container>
       <MainTitle>부스타 다이스 추론기 설명서</MainTitle>
-
+      <a href={finder} target="_blank" rel="noopener noreferrer" download>
+        <Button>
+          {/* <i className="fas fa-download" /> */}
+          finder download
+          <FontAwesomeIcon
+            icon={faCloudDownloadAlt}
+            size="1x"
+            color="white"
+            style={{ marginLeft: "10px" }}
+          />
+        </Button>
+      </a>
       <Description>
         2x배당 이상이 몇 번째 나오는가를 확률로 예측하는 방식입니다. Finder
         스크립트로 자동으로 돌려 패턴을 찾아서 그 결과값을 부스타 추론기를
