@@ -5,6 +5,9 @@ import { authService } from "../fbase";
 import { dbService } from "../fbase";
 import { dockId } from "../Routes/Auth";
 
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faSkullCrossbones } from "@fortawesome/free-solid-svg-icons";
+
 const Container = styled.div`
   position: absolute;
   top: 150px;
@@ -67,9 +70,23 @@ const OverTwelve = styled.span`
   font-size: 16px;
 `;
 
+const RecommandAnimation = (y) => keyframes`
+0% {
+    opacity:1
+  }
+  50% {
+    opacity:0
+  }
+  100% {
+    opacity:1
+  }
+`;
+
 const Recommend = styled.div`
   margin-top: 7px;
   color: #ec644b;
+  color: whitesmoke;
+  animation: ${RecommandAnimation} 1s 2s ease-in-out infinite;
 `;
 
 const BarChart = ({ chance, sum, overfifteen, recommendArray, loading }) => {
@@ -121,9 +138,9 @@ const BarChart = ({ chance, sum, overfifteen, recommendArray, loading }) => {
                   {((cn / sum) * 100).toPrecision(2)} %
                 </span>
                 <Recommend>
-                  {+recommendArray[index] < 70
+                  {+recommendArray[index] < 60
                     ? ""
-                    : `RISK  ${+recommendArray[index]} %`}
+                    : ` 💀 ▶︎  RISK  ${+recommendArray[index]} %  ◀︎  💀 `}
                 </Recommend>
               </div>
               <div

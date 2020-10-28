@@ -32,6 +32,7 @@ const Logo = styled.div`
   width: 16px;
   height: 16px;
   margin-left: 10px;
+  margin-top: 1px;
   background-image: url(${(props) => props.img});
   background-size: contain;
   background-repeat: no-repeat;
@@ -40,8 +41,11 @@ const Logo = styled.div`
   /* background-color: whitesmoke; */
 `;
 const TextBox = styled.div`
-  margin-top: 3px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin-top: 0px;
   margin-left: 15px;
+  font-size: 20px;
 `;
 const HeaderC = ({ userObj }) => {
   const listner = async (event) => {
@@ -56,7 +60,7 @@ const HeaderC = ({ userObj }) => {
     <Header>
       <LogoContainer>
         <Logo img={logo}></Logo>
-        <TextBox>Busta</TextBox>
+        <TextBox>busta</TextBox>
       </LogoContainer>
       <Burger userObj={userObj}></Burger>
       {/* <RightMenu></RightMenu> */}

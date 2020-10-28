@@ -165,7 +165,7 @@ const HomeContainer = () => {
       setSum(10);
       setOverfifteen(0);
     } else if (sameTerm.length > 0) {
-      setError("본인의 ID 보안을 위해 마무리 하실때는 꼭 Sign Out !");
+      // setError("본인의 ID 보안을 위해 마무리 하실때는 꼭 Sign Out !");
       setChance(sameTerm[0].chanceNumbers);
       setSum(sameTerm[0].sum);
       setOverfifteen(sameTerm[0].overfifteen);
@@ -190,7 +190,7 @@ const HomeContainer = () => {
       setXdata(arrayData);
       numberGen();
       // setSearchTerm("");
-      setError("본인의 ID 보안을 위해 마무리 하실때는 꼭 Sign Out !");
+      // setError("본인의 ID 보안을 위해 마무리 하실때는 꼭 Sign Out !");
     }
   };
 

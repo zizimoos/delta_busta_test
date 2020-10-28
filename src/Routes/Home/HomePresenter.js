@@ -71,6 +71,7 @@ const SInput = styled.input`
   font-size: 14px;
   text-align: center;
   background-color: #4a5d70;
+  background-color: white;
   ::placeholder {
     /* background-color: rgba(255, 255, 255, 0.2); */
     /* color: rgba(255, 255, 255, 0.2); */
