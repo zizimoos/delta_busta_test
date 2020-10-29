@@ -231,7 +231,8 @@ const HomePresenter = ({
         <AuthForm onSubmit={onSubmit}>
           <span
             style={{
-              color: "#4a5d70",
+              // color: "#4a5d70",
+              color: "whitesmoke",
             }}
           >
             {" "}
@@ -247,7 +248,8 @@ const HomePresenter = ({
           ></SInput>
           <span
             style={{
-              color: "#4a5d70",
+              color: "whitesmoke",
+              // color: "#4a5d70",
             }}
           >
             {" "}
