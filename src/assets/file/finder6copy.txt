@@ -1,0 +1,99 @@
+//Modified by magic hand
+var config = {
+  wager: { label: "Wager", type: "balance", value: 100 },
+  target: { label: "Target", type: "multiplier", value: 1.01 },
+};
+const byStep = 5;
+const stopX = 10;
+const oneNumber = 1;
+
+let exx = 0;
+
+let logBY = [];
+let logBYfinal = [];
+let nineStep = 1;
+let nineLast;
+let nineBefore;
+let numberOfOne = 0;
+
+let skip = false;
+while (true) {
+  if (skip === false) {
+    const { multiplier } = await this.bet(
+      config.wager.value,
+      config.target.value
+    );
+    if (multiplier >= config.target.value + 0.99) {
+      logBY.push(exx);
+      exx = 0;
+      nineBefore = logBY[logBY.length - 2];
+      nineLast = logBY[logBY.length - 1];
+      if (nineLast !== 0 && nineBefore !== 0) {
+        nineStep++;
+      } else if (nineLast === 0 || nineBefore === 0) {
+        nineStep = 1;
+      }
+      if (nineStep === byStep) {
+        logBYfinal = logBY.slice(logBY.length - (byStep + 0), logBY.length);
+
+        let xxx = logBYfinal.reduce((a, b) => a + b, 0);
+        // ¥‹∞Ëæ»ø° 10¿ÃªÛ¿Ã ¿÷¿∏∏È ∆–Ω∫, »§¿∫ 1¿Ã 3∞≥¿ÃªÛ¿Ã∏È ∆–Ω∫
+        if (xxx > stopX) {
+          logBYfinal.forEach(function (element) {
+            if (element === 1) {
+              numberOfOne++;
+            }
+          });
+          //this.log("numberOfOne", numberOfOne);
+          if (numberOfOne < oneNumber) {
+            this.log("", logBYfinal);
+            logBYfinal = [];
+            this.stop();
+          }
+          numberOfOne = 0;
+        }
+      }
+    } else {
+      exx++;
+    }
+    skip = true;
+  } else if (skip === true) {
+    const { multiplier } = await this.skip(
+      config.wager.value,
+      config.target.value
+    );
+    if (multiplier >= config.target.value + 0.99) {
+      logBY.push(exx);
+      exx = 0;
+      nineBefore = logBY[logBY.length - 2];
+      nineLast = logBY[logBY.length - 1];
+      if (nineLast !== 0 && nineBefore !== 0) {
+        nineStep++;
+      } else if (nineLast === 0 || nineBefore === 0) {
+        nineStep = 1;
+      }
+      if (nineStep === byStep) {
+        logBYfinal = logBY.slice(logBY.length - (byStep + 0), logBY.length);
+
+        let xxx = logBYfinal.reduce((a, b) => a + b, 0);
+        if (xxx > stopX) {
+          logBYfinal.forEach(function (element) {
+            if (element === 1) {
+              numberOfOne++;
+            }
+          });
+          //this.log("numberOfOne", numberOfOne);
+          if (numberOfOne < oneNumber) {
+            this.log("", logBYfinal);
+            logBYfinal = [];
+            this.stop();
+          }
+          numberOfOne = 0;
+        }
+      }
+    } else {
+      exx++;
+    }
+    skip = false;
+  }
+}

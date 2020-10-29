@@ -9,7 +9,7 @@ import run from "../../assets/img/run.png";
 import search from "../../assets/img/search.png";
 import realBet from "../../assets/img/realBet.png";
 import result from "../../assets/img/result.png";
-import finder from "../../assets/file/finder.txt";
+import finder from "../../assets/file/finder6copy.txt";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudDownloadAlt } from "@fortawesome/free-solid-svg-icons";
