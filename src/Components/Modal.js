@@ -114,7 +114,7 @@ const ModalApp = ({ history }) => {
               textAlign: "justify",
             }}
           >
-            10월 31일 업데이트로 인하여{" "}
+            시스템 점검으로 매월 4째주 토요일{" "}
             <strong style={{ color: "red", fontWeight: "500" }}>
               오전 6시 부터 오전 9시까지
             </strong>{" "}
