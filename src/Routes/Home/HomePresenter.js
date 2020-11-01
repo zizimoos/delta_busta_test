@@ -289,7 +289,6 @@ const HomePresenter = ({
             findDBForSameTerm={findDBForSameTerm}
             loading={loading}
           ></BarChart>
-          ;
         </>
       )}
     </Container>

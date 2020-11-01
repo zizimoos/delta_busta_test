@@ -189,7 +189,7 @@ const Auth = ({ history }) => {
             value={newAccount ? "Create Account" : "Log In"}
           ></Submit>
         </AuthForm>
-        <p style={{ color: "white" }}>{error ? `Error : ${error}` : null}</p>
+        <p style={{ color: "white" }}>{error ? `Message : ${error}` : null}</p>
       </AuthFormBox>
     </Container>
   );
